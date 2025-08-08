@@ -1,6 +1,8 @@
-import postgres from 'postgres'
+import { createClient } from '@supabase/supabase-js'
 
-const connectionString = process.env.DATABASE_URL
-const sql = postgres(connectionString)
+// These come from Supabase dashboard → Project Settings → API
+const DATABASE_URL='postgresql://postgres.tdjnfslftmgntklhlpli:C0lumbinaisKing.@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkam5mc2xmdG1nbnRrbGhscGxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ2MzE4MTMsImV4cCI6MjA3MDIwNzgxM30.rAZ-rrawY9XCjCjZa_h05s6q0wwkFGCszsgm-dbDVXk'
 
-export default sql
+// Create a single Supabase client for your app
+export const supabase = createClient(DATABASE_URL, SUPABASE_ANON_KEY)
