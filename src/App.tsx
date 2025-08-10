@@ -7,13 +7,9 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-type User = {
-  id: number;
-  name: string;
-};
 
 function App() { 
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     getUsers();
@@ -33,8 +29,8 @@ function App() {
     <div>
       <h1>Users</h1>
       <ul>
-        {users.map((u) => (
-          <li key={u.id}>{u.name}</li>
+        {users.map((user) => (
+          <li key={user.username}>{user.email}</li>
         ))}
       </ul>
     </div>
