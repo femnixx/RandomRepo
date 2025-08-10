@@ -1,40 +1,10 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
+import { supabase } from './SupabaseClient';
 
 function App() { 
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    getUsers();
-  }, []);
   
-  async function getUsers() {
-    const { data, error } = await supabase.from("users").select();
-
-    if (error) {
-      console.error(error);
-    } else if (data) {
-      setUsers(data);
-    }
-  }
-
-  return (
-    <div>
-      <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username}</li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export default App;
