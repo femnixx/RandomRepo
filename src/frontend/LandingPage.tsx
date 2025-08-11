@@ -1,13 +1,13 @@
-import React from 'react'
+import '../App.css';
 
-const LandingPage = () => {
+function App() { 
   return (
-    <div>
-        <div>
-            <p>Landing page</p>
-        </div>
-    </div>
-  )
+    <>
+      <div>
+        <p>Hi there</p>
+      </div>
+    </>
+  );
 }
 
-export default LandingPage
+export default App;

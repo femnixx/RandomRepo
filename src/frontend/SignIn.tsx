@@ -7,7 +7,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('')
      
     const handleLogin = async () => {
-        let { data error } = await supabase.auth.signInWithPassword
+        let { data, error } = await supabase.auth.signInWithPassword
     }
   
     return (
@@ -15,9 +15,6 @@ const SignIn = () => {
         <div>
             <p>Welcome back</p>
             
-            <div className='mt-5'>
-                <input type="email" className='border-1 px-2'/>            
-            </div>
         </div>
     </div>
   )
