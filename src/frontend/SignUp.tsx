@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { supabase } from '../SupabaseClient'
-import { useNavigate } from 'react-router-dom'
+import { UNSAFE_ErrorResponseImpl, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -8,8 +9,22 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp =  () => {
-
+  const handleSignUp =  async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          username: username
+        }
+      }
+    })
+    if (error) {
+      alert(error)
+    } else {
+      const { data: { user } } = await supabase.auth.getUser();
+      window.alert('User signed up as: ' + user?.user_metadata.username)
+    }
   }
   return (
     <>
@@ -28,6 +43,7 @@ const SignUp = () => {
           <p>Password</p>
           <input type="password" className="border-1 w-fit" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
+        <Link to="/">LandingPage</Link>
       </div>
     </form>
     </>
