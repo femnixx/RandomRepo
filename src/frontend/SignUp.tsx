@@ -19,7 +19,7 @@ const SignUp = () => {
         }
       }
     })
-    if (error) {
+    if (error || username == '' || email == '' || password == '') {
       alert(error)
     } else {
       const { data: { user } } = await supabase.auth.getUser();
