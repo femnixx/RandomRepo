@@ -24,6 +24,7 @@ const SignUp = () => {
     } else {
       const { data: { user } } = await supabase.auth.getUser();
       window.alert('User signed up as: ' + user?.user_metadata.username)
+      navigate('/login');
     }
   }
   return (
