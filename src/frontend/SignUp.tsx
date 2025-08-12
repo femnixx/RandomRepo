@@ -44,7 +44,7 @@ const SignUp = () => {
           <p>Password</p>
           <input type="password" className="border-1 w-fit" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <button className='border-1 px-2 mt-5 ms-5' onClick={handleSignUp}>Submit</button>
+        <button className='border-1 px-2 mt-5 ms-5'>Submit</button>
       </div>
     </form>
         <Link to="/">LandingPage</Link>
