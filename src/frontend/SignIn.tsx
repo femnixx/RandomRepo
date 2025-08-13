@@ -19,6 +19,7 @@ const SignIn = () => {
       console.error(error)
     } else {
       console.log('Logged in:', data)
+      const{ data: { user } } = await supabase.auth.getUser();
       navigate('/');
 
     }
