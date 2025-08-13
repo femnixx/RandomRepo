@@ -17,12 +17,14 @@ const SignIn = () => {
     })
     if (error) {
       console.error(error)
-    } else {
-      console.log('Logged in:', data)
-      const{ data: { user } } = await supabase.auth.getUser();
-      navigate('/');
-
+      return;
     }
+    console.log("logged in: ", data)
+    // current user
+    const { data: { user } } = await supabase.auth.getUser();
+    console.log("Current user: ", user);
+    navigate('/')
+
   }
 
   return (
@@ -45,7 +47,7 @@ const SignIn = () => {
             className='border-1 px-2'
           />
         </div>
-          <button onClick={handleLogin} className='mt-5 ms-3 hover:cursor-pointer'>Login</button>
+          <button className='mt-5 ms-3 hover:cursor-pointer'>Press enter</button>
       </div>
       <Link to="/">LandingPage</Link>
     </form>
