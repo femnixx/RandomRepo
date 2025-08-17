@@ -11,7 +11,9 @@ const LoggedIn = () => {
         const { data, error } = await supabase.auth.getSession();
         if (data.session) {
             const user = data.session.user;
-
+            setUsername(user.user_metadata.username);
+        } else {
+            console.error(error);
         }
     }
   return (
