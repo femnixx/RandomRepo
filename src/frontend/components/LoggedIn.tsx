@@ -16,7 +16,7 @@ const LoggedIn = () => {
     }
   return (
     <div>
-        <p>Hi there</p>
+        <p>Hi there, welcome ${username}</p>
     </div>
   )
 }
