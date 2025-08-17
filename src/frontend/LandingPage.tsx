@@ -6,13 +6,14 @@ import { useEffect } from 'react';
 function App() {
 
   useEffect(() => {
-    const getSession = async () => {
+    const retrieveSession = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
-        
-      }
-    }
-  })
+        console.log(error)
+      } 
+    };
+    retrieveSession();
+  }, []);
   
   return (
     <>
