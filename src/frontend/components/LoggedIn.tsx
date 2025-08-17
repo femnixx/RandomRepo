@@ -27,7 +27,7 @@ const LoggedIn = () => {
             console.log(username); // check if username still is the same as session data
             navigate('/loggedin');
         } else {
-            console.log("Successfull signed out.")
+            console.log("Successfully signed out.")
             navigate('/login');
         }
     }
