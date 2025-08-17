@@ -11,8 +11,7 @@ function App() {
     const sessionCheck = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (data.session) {
-        const user = data.session.user;
-        setName(user?.user_metadata?.username ?? "Guest");
+        navigate('/loggedin')
       } else {
         console.log(error)
       }
@@ -35,7 +34,6 @@ function App() {
     <>
       <div>
         <p>Landing Page</p>
-        <p>Current logged in as: {name || "No one"}</p> {/* ✅ render state here */}
         
         <div className='flex flex-col mt-5 gap-y-3'>
           <Link to="/login" className='w-fit'>Login</Link>
