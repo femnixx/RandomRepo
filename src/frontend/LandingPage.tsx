@@ -1,10 +1,10 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../SupabaseClient';
 import { useEffect, useState } from 'react';
-import type { User } from '@supabase/supabase-js';
-
+import { Link } from 'react-router-dom';
 function App() {
+  const navigate = useNavigate();
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
@@ -13,11 +13,23 @@ function App() {
       if (data.session) {
         const user = data.session.user;
         setName(user?.user_metadata?.username ?? "Guest");
+      } else {
+        console.log(error)
       }
     };
 
     sessionCheck();
   }, []);
+
+    const handleSignOut = async () => {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.log(error)
+      } else {
+        navigate("/login");
+      }
+    }
+
 
   return (
     <>
@@ -28,6 +40,8 @@ function App() {
         <div className='flex flex-col mt-5 gap-y-3'>
           <Link to="/login" className='w-fit'>Login</Link>
           <Link to="/signup" className='w-fit'>Signup</Link>
+
+          {name ? <button className='hover:cursor-pointer'onClick={handleSignOut} >Sign out</button>: null}
         </div>
       </div>
     </>
