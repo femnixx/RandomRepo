@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { supabase } from '../../SupabaseClient'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const LoggedIn = () => {
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('Guest');
     const navigate = useNavigate();
 
-    const handleSession = async () => {
+    useEffect(() => {
+        const handleSession = async () => {
         const { data, error } = await supabase.auth.getSession();
         if (data.session) {
             const user = data.session.user;
@@ -15,10 +16,13 @@ const LoggedIn = () => {
         } else {
             console.error(error);
         }
-    }
+    };
+    handleSession();
+    }, []); // only run once after first render;
+    
   return (
     <div>
-        <p>Hi there, welcome ${username}</p>
+        <p>Hi there, welcome {username}</p>
     </div>
   )
 }
