@@ -20,9 +20,21 @@ const LoggedIn = () => {
     handleSession();
     }, []); // only run once after first render;
     
+    const handleSignOut = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error(error);
+            console.log(username); // check if username still is the same as session data
+            navigate('/loggedin');
+        } else {
+            console.log("Successfull signed out.")
+            navigate('/login');
+        }
+    }
   return (
     <div>
         <p>Hi there, welcome {username}</p>
+        <button className='border-1 px-2 hover:cursor-pointer' onClick={handleSignOut}>Sign out</button>
     </div>
   )
 }
