@@ -6,7 +6,7 @@ import { useState } from 'react'
 const LoggedIn = () => {
     const [username, setUsername] = useState('Guest');
     const navigate = useNavigate();
-    const [rescues, setRescues] = useState(0);
+    const [rescue, setRescue] = useState(0);
 
     useEffect(() => {
         const handleSession = async () => {
@@ -35,7 +35,7 @@ const LoggedIn = () => {
   return (
     <div>
         <p>Hi there, welcome {username}</p>
-        <p>Current rescues: {rescues}</p>
+        <p>Current rescues: {rescue}</p>
         
         <div className='flex flex-col justify-start w-fit gap-y-5 py-3 ps-3'>
             <button className='hover:cursor-pointer'>Rescue An Animal</button>
