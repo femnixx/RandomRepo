@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { supabase } from '../../SupabaseClient'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom'
 const LoggedIn = () => {
     const [username, setUsername] = useState('Guest');
     const navigate = useNavigate();
@@ -38,8 +38,8 @@ const LoggedIn = () => {
         <p>Current rescues: {rescue}</p>
         
         <div className='flex flex-col justify-start w-fit gap-y-5 py-3 ps-3'>
-            <button className='hover:cursor-pointer'>Rescue An Animal</button>
-            <button className='hover:cursor-pointer'>Found An Animal</button>
+            <Link to="/rescued" className='hover:cursor-pointer'>Rescue An Animal</Link>
+            <Link to="/found" className='hover:cursor-pointer'>Found An Animal</Link>
         </div>
         
         
