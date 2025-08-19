@@ -21,7 +21,8 @@ const RescueAnimal = () => {
         // do it here
       }
     }
-  })
+    DisplayImage()
+  }, [])
 
   return (
     <div>
