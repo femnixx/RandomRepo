@@ -1,28 +1,38 @@
 import { supabase } from "../SupabaseClient"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 const RescueAnimal = () => {
-  const [image, setImage] = useState<any[]>([]) // store image files
+  const [images, setImages] = useState<string[]>([]) // store image URLs
   const [error, setError] = useState<string | null>(null)
-  useEffect( () => {
-    const DisplayImage = async () => {
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      // 1. List files in the "cities" folder
       const { data, error } = await supabase
-      .storage
-      .from('animals')
-      .list('cities', {
-        limit: 2,
-        offset: 0,
-        sortBy: { column: 'name', order:'asc'}
-      })
+        .storage
+        .from("animals")
+        .list("cities", {
+          sortBy: { column: "name", order: "asc" },
+        })
 
       if (error) {
-        console.error(error)
-      } else {
-        setImage(data)
+        setError(error.message)
+      } else if (data) {
+        // 2. Build public URLs for each file
+        const urls = data.map((file) => {
+          const { data: publicUrl } = supabase
+            .storage
+            .from("animals")
+            .getPublicUrl(`cities/${file.name}`)
+          return publicUrl.publicUrl
+        })
+
+        // 3. Save URLs into state
+        setImages(urls)
       }
     }
-    DisplayImage()
+
+    fetchImages()
   }, [])
 
   return (
@@ -30,9 +40,12 @@ const RescueAnimal = () => {
       <p>RescueAnimal</p>
       <p>List Images:</p>
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
+
       <ul>
-        {image.map((img) => (
-          <li key={img.name}>{img.name}</li>
+        {images.map((url, i) => (
+          <li key={i}>
+            <img src={url} alt={`animal-${i}`} width={200} />
+          </li>
         ))}
       </ul>
     </div>
