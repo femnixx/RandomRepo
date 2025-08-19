@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const RescueAnimal = () => {
-
+  const [image, setImage] = useState('')
+  
   useEffect( () => {
     const DisplayImage = async () => {
       const { data, error } = await supabase
