@@ -45,7 +45,14 @@ const RescueAnimal = () => {
     <div>
       <p>RescueAnimal</p>
       <p>List Images:</p>
-      
+      <div className="grid grid-cols-3 gap-4">
+        {images.map((img) => (
+          <div key={img.name} className="border p-2">
+            <p>{img.name}</p>
+            <img src={img.url} alt={img.name} className="w-40 h-40 object-cover"/>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
