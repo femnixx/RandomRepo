@@ -38,6 +38,10 @@ const RescueAnimal = () => {
       setImages([]);
       return;
     }
+    // 3) build full storage paths for each file
+    const paths = imageItems.map((f) => `${folder}/${f.name}`);
+
+    // $)  
     if (data) {
       // convert file names into public URLs
       const urls = data.map((file) => {
