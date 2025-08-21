@@ -24,7 +24,7 @@ const FoundAnimal = () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       console.error("No user session found, please log in.")
-      navigate('/');
+      navigate('/login');
     }
     // use the selected file directly
     const { data, error } = await supabase.storage
