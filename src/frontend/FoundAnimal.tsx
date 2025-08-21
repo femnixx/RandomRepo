@@ -26,18 +26,22 @@ const FoundAnimal = () => {
     if (selectedFile) {
       return (
         <p>File successfully uploaded.</p>
-      ) else {
+      ) 
+    }else {
         return (
           <div>
             Something went wrong.
           </div>
         )
       }
-    }
   }
 
   return (
-    <div>FoundAnimal</div>
+    <div>
+      <h2>FoundAnimal</h2>
+      <input type="file" onChange={onFilechange} />
+      <button onClick={onFileUpload}>Upload</button>
+    </div>
   )
 }
 
