@@ -4,6 +4,16 @@ import { supabase } from "../SupabaseClient";
 const RescueAnimal = () => {
   const navigate = useNavigate();
 
+  const handleFileRetrieval = async () => {
+    const { data: userData, error: sessionError } = await supabase.auth.getSession()
+     if (data.session) {
+      const user = userData.session?.user.id;
+
+     } else {
+      console.error(sessionError)
+     }
+  } 
+
   const handleNavigation = () => {
     navigate('/')
   }
