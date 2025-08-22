@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const RescueAnimal = () => {
   const navigate = useNavigate();
-
+  
   const handleFileRetrieval = async () => {
     const { data: userData, error: sessionError } = await supabase.auth.getSession()
      if (data.session) {
