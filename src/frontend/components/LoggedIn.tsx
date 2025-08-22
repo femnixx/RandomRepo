@@ -3,6 +3,8 @@ import { supabase } from '../../SupabaseClient'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+
 const LoggedIn = () => {
     const [username, setUsername] = useState('Guest');
     const navigate = useNavigate();
@@ -10,10 +12,26 @@ const LoggedIn = () => {
 
     useEffect(() => {
         const handleSession = async () => {
-        const { data, error } = await supabase.auth.getSession();
-        if (data.session) {
-            const user = data.session.user;
+        const { data: sessionData, error } = await supabase.auth.getSession();
+        if (sessionData.session) {
+            const user = sessionData.session.user;
+            const userID = user.id
             setUsername(user.user_metadata.username);
+            
+            // set rescues
+            const { data: userData, error } = await supabase
+                .storage
+                .from('users')
+                .list(userID + "/", {
+                    limit:100,
+                });
+            if (error) {
+                console.error(error)
+            } else {
+                console.log(userData)
+                setRescue(userData.length)
+            }
+                
         } else {
             console.error(error);
         }
