@@ -1,10 +1,8 @@
 import React from 'react'
-import axios from 'axios'
 import { useState } from 'react'
 import { supabase } from '../SupabaseClient'
-import { User } from '@supabase/supabase-js'
 import { useNavigate } from 'react-router-dom'
-import { decode } from 'base64-arraybuffer'
+import { toByteArray } from 'base64-js'
 
 const FoundAnimal = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
