@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../SupabaseClient";
+import { useState } from "react";
 
 const RescueAnimal = () => {
   const navigate = useNavigate();
@@ -7,7 +8,16 @@ const RescueAnimal = () => {
   const handleFileRetrieval = async () => {
     const { data: userData, error: sessionError } = await supabase.auth.getSession()
      if (data.session) {
-      const user = userData.session?.user.id;
+      const userID = userData.session?.user.id;
+      
+      const { data: listUserItems, error: listError } = await supabase
+        .storage
+        .from('users')
+        .list(userID + '/', {
+          limit:100,
+          offset:0,
+          sortBy: { column: "name", order: "asc"},
+        })
 
      } else {
       console.error(sessionError)
