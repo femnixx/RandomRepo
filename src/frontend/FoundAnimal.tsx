@@ -9,6 +9,10 @@ const FoundAnimal = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const navigate = useNavigate();     
 
+  const handleNavigation = () => {
+    navigate('/')
+  }
+
   const onFilechange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if ( event.target.files && event.target.files[0]) {
       setSelectedFile(event.target.files[0]);
@@ -49,8 +53,8 @@ const FoundAnimal = () => {
       <div className='flex flex-col'>
         <input type="file" onChange={onFilechange} />
         <button onClick={onFileUpload} className='flex pt-5'>Upload</button>
-        <div className='flex flex-col'>
-
+        <div className='flex '>
+            <button className='border-1 px-2 py-1'>Return to landing page</button>
         </div>
       </div>
     </div>
