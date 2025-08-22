@@ -54,7 +54,7 @@ const FoundAnimal = () => {
         <input type="file" onChange={onFilechange} />
         <button onClick={onFileUpload} className='flex pt-5'>Upload</button>
         <div className='flex '>
-            <button className='border-1 px-2 py-1'>Return to landing page</button>
+            <button onClick={handleNavigation} className=' hover:cursor-pointer mt-2 border-1 px-2 py-1'>Return to landing page</button>
         </div>
       </div>
     </div>
