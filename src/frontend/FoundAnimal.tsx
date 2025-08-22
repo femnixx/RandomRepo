@@ -3,10 +3,12 @@ import { useState } from 'react'
 import { supabase } from '../SupabaseClient'
 import { useNavigate } from 'react-router-dom'
 import { toByteArray } from 'base64-js'
+import * as FileSystem from "expo-file-system";
 
 const FoundAnimal = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const navigate = useNavigate();     
+
   const onFilechange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if ( event.target.files && event.target.files[0]) {
       setSelectedFile(event.target.files[0]);
@@ -33,7 +35,12 @@ const FoundAnimal = () => {
       .upload(`${user?.id}/${selectedFile.name}`, selectedFile, {
         cacheControl: '3600',
         upsert: false,
-      })
+      });
+    if (error) {
+      console.error('Uploade error:', error);
+    } else {
+      console.log("File uploaded:", data)
+    }
   };
     
   return (
