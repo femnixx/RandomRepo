@@ -62,7 +62,7 @@ const RescueAnimal = () => {
       {/* fetch images */}
       <div>
         {images.map((url, idx) => {
-          return  <img key={idx} src={url} alt="rescue" />
+          return   <img key={idx} src={url} alt="rescue" />
         })}
       </div>
       <button onClick={handleNavigation} className="flex mt-5 px-2 py-2 border-1">Return to landing page</button>
