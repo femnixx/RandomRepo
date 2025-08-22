@@ -1,6 +1,3 @@
-import { useState } from "react"
-import { supabase } from "../SupabaseClient"
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const RescueAnimal = () => {
