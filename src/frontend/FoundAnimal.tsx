@@ -25,27 +25,20 @@ const FoundAnimal = () => {
     if (!user) {
       console.error("No user session found, please log in.")
       navigate('/login');
+      return;
     }
     // use the selected file directly
-    const { data, error } = await supabase.storage
-      .from("images")
-      .upload(`users/${user.id}/${selectedFile.name}`, selectedFile)
+    const { data, error } = await supabase
+      .storage
+      .from("users")
+      .upload(`users/${user?.id}/${selectedFile.name}`, selectedFile, {
+        cacheControl: '3600',
+        upsert: false,
+      })
   };
-  const fileData = () => {
-    if (selectedFile) {
-      return (
-        window.alert('Successfully updated')
-        
-      ) 
-    }else {
-        return (
-          <div>
-            Something went wrong.
-          </div>
-        )
-      }
-  }
-
+    if (Error) {
+      console.error('Upload error:', Error);
+    }
   return (
     <div>
       <h2>FoundAnimal</h2>
