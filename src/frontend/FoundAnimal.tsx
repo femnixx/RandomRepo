@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { supabase } from '../SupabaseClient'
 import { User } from '@supabase/supabase-js'
 import { useNavigate } from 'react-router-dom'
+import { decode } from 'base64-arraybuffer'
 
 const FoundAnimal = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -42,8 +43,10 @@ const FoundAnimal = () => {
   return (
     <div>
       <h2>FoundAnimal</h2>
-      <input type="file" onChange={onFilechange} />
-      <button onClick={onFileUpload}>Upload</button>
+      <div className='flex flex-col'>
+        <input type="file" onChange={onFilechange} />
+        <button onClick={onFileUpload} className='flex pt-5'>Upload</button>
+      </div>
     </div>
   )
 }
