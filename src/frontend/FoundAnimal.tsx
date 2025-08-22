@@ -32,14 +32,12 @@ const FoundAnimal = () => {
     const { data, error } = await supabase
       .storage
       .from("users")
-      .upload(`users/${user?.id}/${selectedFile.name}`, selectedFile, {
+      .upload(`${user?.id}/${selectedFile.name}`, selectedFile, {
         cacheControl: '3600',
         upsert: false,
       })
   };
-    if (Error) {
-      console.error('Upload error:', Error);
-    }
+    
   return (
     <div>
       <h2>FoundAnimal</h2>
