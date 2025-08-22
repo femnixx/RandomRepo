@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../SupabaseClient";
 
 const RescueAnimal = () => {
   const navigate = useNavigate();
