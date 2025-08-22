@@ -49,6 +49,9 @@ const FoundAnimal = () => {
       <div className='flex flex-col'>
         <input type="file" onChange={onFilechange} />
         <button onClick={onFileUpload} className='flex pt-5'>Upload</button>
+        <div className='flex flex-col'>
+
+        </div>
       </div>
     </div>
   )
