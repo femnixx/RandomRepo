@@ -16,7 +16,7 @@ const FoundAnimal = () => {
   const onFileUpload = async () => {
     
     if (!selectedFile ) {
-      console.error("No file selected");
+      console.error("No file selected!");
       return;
     } 
     // get current user
