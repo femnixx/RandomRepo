@@ -61,7 +61,7 @@ const LoggedIn = () => {
         </div>
         
         
-        <button className='border-1 px-2 hover:cursor-pointer' onClick={handleSignOut}>Sign out</button>
+        <button className={` ${username === 'Guest' ? "hidden" : "flex"} border-1 px-2 hover:cursor-pointer`} onClick={handleSignOut}>Sign out</button>
     </div>
   )
 }

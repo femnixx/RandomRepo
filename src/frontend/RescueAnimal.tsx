@@ -60,7 +60,7 @@ const RescueAnimal = () => {
       <p>List Images:</p>
 
       {/* fetch images */}
-      <div>
+      <div className="div border-1 ">
         {images.map((url, idx) => {
           return   <img key={idx} src={url} alt="rescue" />
         })}
