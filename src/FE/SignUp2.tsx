@@ -2,25 +2,29 @@ import React from 'react'
 
 const SignUp2 = () => {
   return (
-    <div className='bg-[#FF9748] w-screen h-screen'>
-          <div className='pt-20'>
-            <div className='rounded-sm flex text-center flex-col bg-white h-fit ml-5 mr-5'>
-              <p>Register With</p>
-              <div className='mt-1 flex justify-center text-center'>
-                <div className='w-fit flex gap-x-3 bg-[#C6ED73] px-5 rounded-full'>
-                  <p>F</p>
-                  <p>G</p>
-                </div>
-              </div>
-              <p>Or fill out these fields below</p>
-              {/* Form  fields */}
-              <div className='flex flexcol'>
-                <div />
-                <p></p>
-                <p></p>
-              </div>
-            </div>
-          </div>
+    <div>
+        <p>Register with</p>
+        <div className='flex bg-green-300 px-2 rounded-lg justify-around'>
+              <p>F</p>
+              <p>G</p>
+        </div>
+        <p>Or fill your credentials</p>
+        <div>
+          <p>Username</p>
+          <input type="username" className='border-1' />
+          <p>Email</p>
+          <input type="email" className='border-1'/>
+          <p>Phone number</p>
+          <input type="text" className='border-1'/>
+          <p>Password</p>
+          <input type="password" className='border-1'/>
+          <p>Confirm password</p>
+          <input type="password" className='border-1'/>
+          <br />
+          <button>Sign Up</button>
+          <br />
+          <button className='text-center'>Already have an account?</button>
+        </div>
     </div>
   )
 }
