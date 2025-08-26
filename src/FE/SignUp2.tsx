@@ -1,20 +1,21 @@
 import React from 'react'
 
-const SignIn2 = () => {
+const SignUp2 = () => {
   return (
-    <div className='bg-[#FF9748] w-screen h-screen flex justify-center'>
-      <div className='bg-white flex justify-center h-fit'>
-        <div className=''>
-          <h1>Register With</h1>
-          <div className='flex justify-between'>
-            <p>Facebook</p>
-            <p>Google</p>
+    <div className='bg-[#FF9748] w-screen h-screen'>
+          <div className='pt-20'>
+            <div className='rounded-xs flex text-center flex-col bg-white h-fit ml-5 mr-5'>
+              <p>Register With</p>
+              <div className='mt-1 flex justify-center text-center'>
+                <div className='w-fit flex gap-x-3 bg-[#C6ED73] px-5 rounded-full'>
+                  <p>F</p>
+                  <p>G</p>
+                </div>
+              </div>
+            </div>
           </div>
-
-        </div>
-      </div>
     </div>
   )
 }
 
-export default SignIn2
+export default SignUp2
