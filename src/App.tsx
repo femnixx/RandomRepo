@@ -8,6 +8,8 @@ import FoundAnimal from './frontend/FoundAnimal'
 import RescueAnimal from './frontend/RescueAnimal'
 import SignUp2 from './FE/SignUp2'
 import LoggedIn2 from './FE/LoggedIn2'
+import SignIn2 from './FE/SignUp2'
+
 const App = () => {
   return (
    <>
@@ -15,7 +17,8 @@ const App = () => {
    <BrowserRouter>
         <Routes>
           <Route path='/signup' element={<SignUp2 />}/> 
-          <Route path='/login' element={<LoggedIn2 />}/> 
+          <Route path='/loggedin' element={<LoggedIn2 />}/>
+          <Route path='login' element={<SignIn2 />}/> 
           {/* Backend routes */}
           <Route path='/BE' element={<LandingPage />}/>
           <Route path='/BElogin' element={<SignIn />}/>
