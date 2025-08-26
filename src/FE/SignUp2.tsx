@@ -13,9 +13,11 @@ const SignUp2 = () => {
                 </div>
               </div>
               <p>Or fill out these fields below</p>
-              {/* For  fields */}
-              <div>
-                
+              {/* Form  fields */}
+              <div className='flex flexcol'>
+                <div />
+                <p></p>
+                <p></p>
               </div>
             </div>
           </div>
