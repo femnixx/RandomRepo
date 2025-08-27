@@ -2,8 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { supabase } from '../SupabaseClient'
 import { useNavigate } from 'react-router-dom'
-import { toByteArray } from 'base64-js'
-import * as FileSystem from "expo-file-system";
+
 
 const FoundAnimal = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -20,8 +19,8 @@ const FoundAnimal = () => {
   };
 
   const onFileUpload = async () => {
-    
     if (!selectedFile ) {
+      
       console.error("No file selected!");
       return;
     } 
