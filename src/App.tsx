@@ -6,9 +6,6 @@ import SignUp from './frontend/SignUp'
 import LoggedIn from './frontend/components/LoggedIn'
 import FoundAnimal from './frontend/FoundAnimal'
 import RescueAnimal from './frontend/RescueAnimal'
-import SignUp2 from './FE/SignUp2'
-import LoggedIn2 from './FE/LoggedIn2'
-import SignIn2 from './FE/SignUp2'
 
 const App = () => {
   return (
